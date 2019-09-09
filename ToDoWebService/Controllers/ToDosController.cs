@@ -82,21 +82,12 @@ namespace ToDoWebService.Controllers
         }
 
         // Delete api/values/5
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            //ExceptionsModel.TodoException(Todos);
+            ExceptionsModel.TodoException(Todos);
 
-            //ExceptionsModel.TodoException(Todos, id);
-            if (Todos == null)
-            {
-                throw new Exception("Todos is null");
-            }
-
-            if (!Todos.ContainsKey(id))
-            {
-                throw new Exception("Todo doesn't exist");
-            }
+            ExceptionsModel.TodoException(Todos, id);
 
             Todos.Remove(id);
         }
