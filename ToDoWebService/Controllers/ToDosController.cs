@@ -45,7 +45,7 @@ namespace ToDoWebService.Controllers
         [HttpPost]
         public ToDoItem Post([FromBody] ToDoItem value)
         {
-            ExceptionsModel.TodoException(Todos);
+            ExceptionsModel.TodoIsNullCheck(Todos);
 
             ToDoItem todo = new ToDoItem
             {
@@ -67,11 +67,11 @@ namespace ToDoWebService.Controllers
         [HttpPut("{id}")]
         public ToDoItem Put(int id, [FromBody] ToDoItem value)
         {
-            ExceptionsModel.TodoException(Todos);
+            ExceptionsModel.TodoIsNullCheck(Todos);
 
-            ExceptionsModel.TodoException(id, value);
+            ExceptionsModel.TodoIdCheck(id, value);
 
-            ExceptionsModel.TodoException(Todos, id);
+            ExceptionsModel.TodoExistsCheck(Todos, id);
 
             Todos.Remove(id);
             Todos.Add(id, value);
@@ -82,9 +82,9 @@ namespace ToDoWebService.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            ExceptionsModel.TodoException(Todos);
+            ExceptionsModel.TodoIsNullCheck(Todos);
 
-            ExceptionsModel.TodoException(Todos, id);
+            ExceptionsModel.TodoExistsCheck(Todos, id);
 
             Todos.Remove(id);
         }

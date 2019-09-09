@@ -7,7 +7,7 @@ namespace ToDoWebService.Models
 {
     public class ExceptionsModel
     {
-        public static void TodoException(Dictionary<int, ToDoItem> todo)
+        public static void TodoIsNullCheck(Dictionary<int, ToDoItem> todo)
         {
             if (todo == null)
             {
@@ -15,7 +15,7 @@ namespace ToDoWebService.Models
             }
         }
 
-        public static void TodoException(Dictionary<int, ToDoItem> todo, int id)
+        public static void TodoExistsCheck(Dictionary<int, ToDoItem> todo, int id)
         {
 
             if (todo.ContainsKey(id) == false)
@@ -24,7 +24,7 @@ namespace ToDoWebService.Models
             }
         }
 
-        public static void TodoException(int id, ToDoItem value)
+        public static void TodoIdCheck(int id, ToDoItem value)
         {
             if (id != value.Id)
             {
