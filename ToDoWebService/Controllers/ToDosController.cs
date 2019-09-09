@@ -69,10 +69,7 @@ namespace ToDoWebService.Controllers
         {
             ExceptionsModel.TodoException(Todos);
 
-            if (id != value.Id)
-            {
-                throw new Exception("Id and Todo Id do not match.");
-            }
+            ExceptionsModel.TodoException(id, value);
 
             ExceptionsModel.TodoException(Todos, id);
 

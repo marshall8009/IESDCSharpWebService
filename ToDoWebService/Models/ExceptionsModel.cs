@@ -24,6 +24,14 @@ namespace ToDoWebService.Models
             }
         }
 
+        public static void TodoException(int id, ToDoItem value)
+        {
+            if (id != value.Id)
+            {
+                throw new Exception("Id and Todo Id do not match.");
+            }
+        }
+
         //public static void TodoIsNull()
         //{
         //    throw new Exception("Todos is null");
